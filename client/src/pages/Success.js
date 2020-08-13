@@ -6,6 +6,28 @@ import {idbPromise} from "../utils/helpers";
 
 
 function Success() {
+
+    const [addOrder] = useMutation(ADD_ORDER);
+
+    useEffect(() => {
+        async function saveOrder(){
+        const cart = await idbPromise('cart','get');
+        const products = cart.map(item => item._id)
+
+        if (products.length) {
+            //add order to history
+            const {data} = await addOrder({ variables: {products}});
+            const productData = data.addOrder.products;
+            //clear data from cart
+            productData.forEach((item) => {
+              idbPromise('cart','delete',item);
+            });
+        }
+        }
+        saveOrder();
+        setTimeout(function(){window.location.assign('/')}, 3000);
+
+    },[addOrder])
     return (
       <div>
         <Jumbotron>
