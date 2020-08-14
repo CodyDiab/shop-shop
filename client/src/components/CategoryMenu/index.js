@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 function CategoryMenu() {
   // const [state, dispatch] = useStoreContext();
   const dispatch = useDispatch();
-  const {categories} = useSelector(state => state.categories);
+  const categories = useSelector(state => state.categories);
   const {loading, data: categoryData } = useQuery(QUERY_CATEGORIES);
   // const categories = categoryData?.categories || [];
   useEffect(() => {
