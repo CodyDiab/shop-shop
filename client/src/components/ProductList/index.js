@@ -1,11 +1,11 @@
 import React, {useEffect} from "react";
 import { useQuery } from '@apollo/react-hooks';
-import { useStoreContext } from '../../utils/GlobalState';
+// import { useStoreContext } from '../../utils/GlobalState';
 import { UPDATE_PRODUCTS } from '../../utils/actions';
 import ProductItem from "../ProductItem";
 import { QUERY_PRODUCTS } from "../../utils/queries";
 import {idbPromise} from '../../utils/helpers';
-import { useDispatch, useSelector,useStore } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import spinner from "../../assets/spinner.gif"
 
 
